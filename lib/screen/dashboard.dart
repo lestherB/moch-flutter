@@ -21,7 +21,7 @@ class _DashboardState extends State<Dashboard> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               child: Text(
-                'Data',
+                'Sales',
                 style: TextStyle(
                   fontSize: 25.0,
                   fontFamily: 'Roboto',
@@ -32,7 +32,56 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: (){
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Add Order'),
+                content: Stack(
+                  overflow: Overflow.visible,
+                  children: <Widget>[
+                    Wrap(
+                      children: [
+                        TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Name'
+                          ),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Location'
+                          ),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Item'
+                          ),
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Price'
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: (){Navigator.of(context).pop();},
+                    child: Text('Add'),
+                    
+                  )
+                ],
+              );
+            }
+          );
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.blue,        
       ),
