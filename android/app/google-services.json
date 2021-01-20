@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1009566274811",
+    "project_id": "moch-mobile",
+    "storage_bucket": "moch-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009566274811:android:50de658b7917a3b1ef8c5e",
+        "android_client_info": {
+          "package_name": "com.applab.moch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009566274811-v9ijcr3atsfq0vpakioqer728ncj9huc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu-bNpdfBwJ8RCaC7UWMprN7bWVKEHyRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009566274811-v9ijcr3atsfq0vpakioqer728ncj9huc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
