@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moch/services/authService.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -6,6 +7,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +23,20 @@ class _DashboardState extends State<Dashboard> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              child: Text(
+              /*child: Text(
                 'Sales',
                 style: TextStyle(
                   fontSize: 25.0,
                   fontFamily: 'Roboto',
                 ),
+                */
+                child: RaisedButton(
+                  child: Text("Sign out"),
+                  onPressed: ()async{
+                    await _auth.signOut();
+                  },
+                ),
               ),
-            ),
           ),
         ],
       ),

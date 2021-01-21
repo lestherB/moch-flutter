@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:moch/models/user.dart';
 
 class AuthService {
+  //this is the instannce from firebase auth annon login enabled in firebase website
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //using User custome model to change return value firebaseUser instead of its default
@@ -24,6 +25,15 @@ class AuthService {
     } catch (e) {
       print(e.toString());
       return null;
+    }
+  }
+
+  Future signOut() async{
+    try{
+      //signOut method is built in by firebase so dont get confused
+      return await _auth.signOut();
+    }catch(e){
+
     }
   }
 }
