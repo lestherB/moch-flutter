@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:moch/services/authService.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
+
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+
+  String email = '';
+  String password = '';
   final AuthService _authService = AuthService();
 
   @override
@@ -24,7 +30,7 @@ class _SignInState extends State<SignIn> {
               TextFormField(
                 decoration: InputDecoration(hintText: 'Email'),
                 onChanged: (val){
-                  
+                  setState(() => email = val);
                 },
               ),
               SizedBox(height:20.0),
@@ -32,7 +38,7 @@ class _SignInState extends State<SignIn> {
                 decoration: InputDecoration(hintText: 'Password'),
                 obscureText: true,
                 onChanged: (val){
-
+                  setState(() => password = val);
                 }
               ),
               SizedBox(height:20.0),
@@ -45,7 +51,19 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 onPressed: (){
-
+                  print(email + ' and ' + password);
+                },
+              ),
+              RaisedButton(
+                color: Colors.blue[400],
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: (){
+                  widget.toggleView();
                 },
               )
             ],
