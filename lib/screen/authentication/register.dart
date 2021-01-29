@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:moch/services/authService.dart';
 
 class Register extends StatefulWidget {
+
   final Function toggleView;
   Register({this.toggleView});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -12,6 +14,7 @@ class _RegisterState extends State<Register> {
   
   String email = '';
   String password = '';
+  String error = '';
   final _formKey = GlobalKey<FormState>();  // use for validator
   final AuthService _authService = AuthService();
 
@@ -38,13 +41,18 @@ class _RegisterState extends State<Register> {
               SizedBox(height:20.0),
               TextFormField(
                 decoration: InputDecoration(hintText: 'Password'),
-                validator: (val) => val.isEmpty ? 'Enter an Email' : null,
+                validator: (val) => val.isEmpty ? 'Enter an password' : null,
                 obscureText: true,
                 onChanged: (val){
                   setState(() => password = val);
                 }
               ),
               SizedBox(height:20.0),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red, fontSize: 14.0),
+              ),
+              SizedBox(height: 15.0,),
               RaisedButton(
                 color: Colors.blue[400],
                 child: Text(
@@ -53,10 +61,12 @@ class _RegisterState extends State<Register> {
                     color: Colors.white,
                   ),
                 ),
-                onPressed: (){
+                onPressed: () async{
                   if(_formKey.currentState.validate()){
-                    print('validated');
-                    print(email + ' and ' + password);
+                    dynamic result = await _authService.registerWithEmailAndPassword(email, password);
+                    if(result == null){
+                      setState(()=> error = 'please input valid email');
+                    }
                   }
                 },
               ),
