@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:moch/models/user.dart';
 import 'package:moch/services/authService.dart';
+import 'package:moch/services/database.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -7,7 +10,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  
   final _auth = AuthService();
+  String name,location,item,price;
 
   @override
   Widget build(BuildContext context) {
@@ -54,19 +59,35 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           TextField(
                             decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'Name'),
+                                border: InputBorder.none, hintText: 'Name'
+                            ),
+                            onChanged: (val){
+                              setState(() => name = val);
+                            },
                           ),
                           TextField(
                             decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'Location'),
+                                border: InputBorder.none, hintText: 'Location'
+                            ),
+                            onChanged: (val){
+                              setState(() => location = val);
+                            },
                           ),
                           TextField(
                             decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'Item'),
+                                border: InputBorder.none, hintText: 'Item'
+                            ),
+                            onChanged: (val){
+                              setState(() => item = val);
+                            },
                           ),
                           TextField(
                             decoration: InputDecoration(
-                                border: InputBorder.none, hintText: 'Price'),
+                                border: InputBorder.none, hintText: 'Price'
+                            ),
+                            onChanged: (val){
+                              setState(() => price = val);
+                            },
                           )
                         ],
                       ),
@@ -74,8 +95,10 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   actions: <Widget>[
                     TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
+                      onPressed: () async{
+                        //await DatabaseServices().sampleSaveData(name, location, item, price);
+                        //Navigator.of(context).pop();
+                        
                       },
                       child: Text('Add'),
                     )
